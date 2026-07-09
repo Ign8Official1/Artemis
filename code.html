@@ -1237,6 +1237,67 @@
     100% { transform: scale(1); }
   }
 
+  .exec-bow-icon {
+    width: 54px;
+    height: 54px;
+    display: block;
+    overflow: visible;
+  }
+  .exec-bow-icon .exec-bow-limb {
+    stroke: #fff;
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    fill: none;
+    transform-origin: 36px 32px;
+  }
+  .exec-bow-icon .exec-grip {
+    stroke: #fff;
+    stroke-width: 2.4;
+    stroke-linecap: round;
+  }
+  .exec-bow-icon .exec-string {
+    stroke: rgba(255,255,255,.75);
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    transform-origin: 14px 32px;
+  }
+  .exec-bow-icon .exec-arrow {
+    stroke: #fff;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+  }
+  .exec-bow-icon .exec-arrow-head { fill: #fff; stroke: none; }
+
+  .exec-fab.firing .exec-bow-limb {
+    animation: bowLimbRecoil .45s cubic-bezier(.16,1,.3,1);
+  }
+  .exec-fab.firing .exec-string {
+    animation: bowStringSnap .45s cubic-bezier(.16,1,.3,1);
+  }
+  .exec-fab.firing .exec-arrow-group {
+    animation: arrowLaunch .55s cubic-bezier(.22,1,.36,1);
+  }
+  @keyframes bowLimbRecoil {
+    0%, 100% { transform: rotate(0deg); }
+    18% { transform: rotate(-4deg); }
+    40% { transform: rotate(2deg); }
+  }
+  @keyframes bowStringSnap {
+    0%, 100% { transform: scaleX(1); opacity: .75; }
+    15% { transform: scaleX(.88); opacity: 1; }
+    30% { transform: scaleX(1.06); opacity: .9; }
+  }
+  @keyframes arrowLaunch {
+    0% { transform: translateX(0); opacity: 1; filter: drop-shadow(0 0 0 transparent); }
+    18% { transform: translateX(2px); opacity: 1; filter: drop-shadow(0 0 4px rgba(255,255,255,.6)); }
+    42% { transform: translateX(22px); opacity: 1; filter: drop-shadow(2px 0 6px rgba(255,255,255,.45)); }
+    52% { transform: translateX(30px); opacity: 0; filter: drop-shadow(6px 0 10px rgba(255,255,255,0)); }
+    53% { transform: translateX(-8px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; filter: drop-shadow(0 0 0 transparent); }
+  }
+
   .nav {
     position: relative;
   }
@@ -1640,7 +1701,20 @@
             <button class="btn">Paste</button>
           </div>
           <button class="exec-fab" id="exec-btn" title="Execute" data-augmented-ui="tl-clip tr-clip bl-clip br-clip border">
-            <img alt="" style="width:54px;height:54px;object-fit:contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwGI8p8TeuSjRqXn7wsQKxNiB5KMsw_9htI0UHUtrDYS0lCVcgTBsQMbP7RBqZ8uDNLjJOGto_npaEZHARFl9fGaxbIdK-yox0Qbbedq5rwDauVtFP9GmxBIej9jKslkKPF5dw3hqkULJXEAATdCSUbgcPZqLfvpqF6Ovsbndu3sUS7gcjAjm3wGYQbqas1qnn5HvSFDXSgbyQVYV15wzxnwJTfjp6dE7vWU7B41VFobMaBdFGsn2904tgnDBdN5mfRALMxf8_2AAUlqc">
+            <svg class="exec-bow-icon" viewBox="0 0 64 64" aria-hidden="true">
+              <path class="exec-bow-limb" d="M14 8 C28 8 40 18 40 32"/>
+              <path class="exec-bow-limb" d="M14 56 C28 56 40 46 40 32"/>
+              <line class="exec-grip" x1="40" y1="27" x2="40" y2="37"/>
+              <line class="exec-string" x1="14" y1="8" x2="14" y2="56"/>
+              <g class="exec-arrow-group">
+                <line class="exec-arrow" x1="10" y1="32" x2="52" y2="32"/>
+                <path class="exec-arrow-head" d="M46 26 L56 32 L46 38 Z"/>
+                <line class="exec-arrow" x1="8" y1="25" x2="16" y2="32"/>
+                <line class="exec-arrow" x1="8" y1="39" x2="16" y2="32"/>
+                <line class="exec-arrow" x1="12" y1="25" x2="20" y2="32"/>
+                <line class="exec-arrow" x1="12" y1="39" x2="20" y2="32"/>
+              </g>
+            </svg>
           </button>
         </div>
       </section>
