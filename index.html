@@ -2215,24 +2215,24 @@
     for (let step = 0; step < bootSteps.length; step++) {
       const [pct, msg] = bootSteps[step];
       bootStatus.classList.add('swap');
-      await new Promise(r => setTimeout(r, 120));
+      await new Promise(r => setTimeout(r, 70));
       bootStatus.textContent = msg;
       bootStatus.classList.remove('swap');
       bootStepsEl.children[step].classList.add('on');
       const start = last;
-      const frames = 16;
+      const frames = 10;
       for (let i = 1; i <= frames; i++) {
         const v = start + ((pct - start) * i) / frames;
         bootFill.style.width = v + '%';
         bootPct.textContent = Math.round(v) + '%';
         bootPct.classList.add('tick');
-        setTimeout(() => bootPct.classList.remove('tick'), 120);
-        await new Promise(r => setTimeout(r, 28));
+        setTimeout(() => bootPct.classList.remove('tick'), 70);
+        await new Promise(r => setTimeout(r, 20));
       }
       last = pct;
-      await new Promise(r => setTimeout(r, 160));
+      await new Promise(r => setTimeout(r, 90));
     }
-    await new Promise(r => setTimeout(r, 280));
+    await new Promise(r => setTimeout(r, 150));
     boot.classList.remove('active');
     boot.classList.add('done');
     overlay.classList.remove('booting');
